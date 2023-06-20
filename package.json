@@ -1,6 +1,5 @@
 {
   "name": "monaco-autojs",
-  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
@@ -9,6 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.2.0",
+    "eventemitter3": "^5.0.1",
     "monaco-editor": "^0.39.0",
     "vue": "^3.2.45"
   },
