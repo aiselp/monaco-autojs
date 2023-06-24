@@ -2,12 +2,12 @@ import MobileEditor from "./MobileEditor";
 import EventEmitter from "eventemitter3";
 import { jsCode } from "./testdata";
 
-const ee = new EventEmitter();
+const event = new EventEmitter();
 const isDev = import.meta.env.DEV;
 
 let globalApp: MobileEditor | null = null;
 
-function init(dom: HTMLElement) {
+export function init(dom: HTMLElement) {
   globalApp = new MobileEditor(dom);
   //   if (isDev) {
   globalApp.openFile({
@@ -16,11 +16,14 @@ function init(dom: HTMLElement) {
   });
   //}
 
-  ee.emit("ready");
+  event.emit("ready");
 }
-function getDefaultEditor(): MobileEditor | null {
+export function getDefaultEditor(): MobileEditor | null {
   return globalApp;
 }
+export function insertText(text: string): void {
+  globalApp?.insertText(text);
+  globalApp?.editor.focus();
+}
 
-export default ee;
-export { init, getDefaultEditor };
+export default event;
