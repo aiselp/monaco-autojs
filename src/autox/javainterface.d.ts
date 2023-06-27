@@ -4,7 +4,7 @@ declare namespace AutoxService {
 
 
 interface JsBridge {
-  callHandle(data: string, callback: () => void): void
+  callHandler(event: string, data?: string, callback?: (data: string) => void): void
   registerHandler(event: string,
     handle: (data: string, callback: (data: string) => void) => void): void
 }
@@ -14,5 +14,17 @@ let autox: Promise<JsBridge> = new Promise(function (re) {
     re(window.$autox)
   })
 })
+interface Result {
+  state: boolean,
+  value?: string,
+  errMessage?: string,
+  uri?: string,
+}
+interface FileRequest {
+  uri: string,
+  type: string,
+  data?: string,
+}
 export default AutoxService;
 export { autox }
+export type { JsBridge, Result, FileRequest }
