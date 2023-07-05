@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import './userWorker';
+import './core/app'
 import './style.css'
 import App from './App.vue'
 
